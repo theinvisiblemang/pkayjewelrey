@@ -12,45 +12,120 @@
     :root {
       --pkay-pink: #ff85a1;
       --pkay-purple: #7b2cbf;
-      --glass: rgba(255, 255, 255, 0.1);
-      --bg-dark: #0f0c29;
-      --accent-glow: rgba(255, 133, 161, 0.4);
+      --glass: rgba(255, 255, 255, 0.08);
+      --bg-dark: #0a0718;
+      --accent-glow: rgba(255, 133, 161, 0.35);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
     
     body {
       font-family: 'Outfit', sans-serif;
-      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      background: linear-gradient(135deg, #0a0718, #1a1235, #120e2e);
       color: #fff;
       min-height: 100vh;
       overflow-x: hidden;
     }
 
+    /* --- 1. BOUTIQUE ANIME INTRO OVERLAY --- */
+    #splash-screen {
+      position: fixed; 
+      inset: 0; 
+      z-index: 9999;
+      display: flex; 
+      flex-direction: column; 
+      justify-content: center; 
+      align-items: center;
+      background: #05030a;
+      animation: fadeOutSplash 0.4s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+      animation-delay: 1.2s;
+      pointer-events: none;
+    }
+    
+    .splash-glow-container {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle, rgba(255,133,161,0.18) 0%, rgba(5,3,10,0) 70%);
+      z-index: 1;
+    }
+
+    .splash-text-group {
+      text-align: center;
+      z-index: 2;
+      opacity: 0;
+      transform: scale(0.92);
+      animation: animeBrandZoom 0.9s cubic-bezier(0.215, 0.610, 0.355, 1) forwards;
+      animation-delay: 0.15s;
+    }
+
+    .splash-logo {
+      font-family: 'Comfortaa', cursive;
+      font-size: 2.8rem; 
+      font-weight: 700; 
+      color: #ffffff; 
+      letter-spacing: -1px;
+      line-height: 1.1;
+      text-shadow: 0 0 15px rgba(255, 133, 161, 0.6);
+    }
+    
+    .splash-subtitle {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--pkay-pink); 
+      margin-top: 8px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+    }
+    
+    .splash-build {
+      position: absolute; 
+      bottom: 30px; 
+      left: 20px; 
+      font-size: 0.65rem; 
+      color: rgba(255,255,255,0.25); 
+      letter-spacing: 1px; 
+      display: flex; 
+      align-items: center; 
+      gap: 6px;
+      z-index: 2;
+    }
+    .build-dot { width: 5px; height: 5px; background: var(--pkay-pink); border-radius: 50%; box-shadow: 0 0 8px var(--pkay-pink); }
+
+    @keyframes animeBrandZoom {
+      0% { opacity: 0; transform: scale(0.92); filter: blur(6px); }
+      40% { opacity: 1; filter: blur(0px); }
+      100% { opacity: 1; transform: scale(1.03); }
+    }
+    
+    @keyframes fadeOutSplash {
+      0% { opacity: 1; visibility: visible; }
+      100% { opacity: 0; visibility: hidden; }
+    }
+
     /* --- BACKGROUND DECOR --- */
     .circle-glow {
       position: fixed;
-      width: 300px; height: 300px;
+      width: 320px; height: 320px;
       background: var(--pkay-pink);
-      filter: blur(120px);
+      filter: blur(130px);
       border-radius: 50%;
       z-index: -1;
-      opacity: 0.3;
-      top: -50px; right: -50px;
+      opacity: 0.22;
+      top: -60px; right: -60px;
     }
 
     /* --- HEADER --- */
     header {
       text-align: center;
-      padding: 40px 20px 20px;
+      padding: 50px 20px 20px;
     }
 
     .logo-container {
-      width: 100px; height: 100px;
-      margin: 0 auto 15px;
+      width: 96px; height: 96px;
+      margin: 0 auto 16px;
       border-radius: 50%;
       border: 3px solid var(--pkay-pink);
-      padding: 5px;
+      padding: 4px;
       background: white;
       box-shadow: 0 0 20px var(--accent-glow);
     }
@@ -61,137 +136,156 @@
       object-fit: cover;
     }
 
-    h1 { font-family: 'Comfortaa', cursive; font-size: 1.8rem; margin-bottom: 5px; }
-    .slogan { font-weight: 300; color: var(--pkay-pink); letter-spacing: 2px; font-size: 0.9rem; text-transform: uppercase; }
+    h1 { font-family: 'Comfortaa', cursive; font-size: 1.7rem; margin-bottom: 4px; }
+    .slogan { font-weight: 300; color: var(--pkay-pink); letter-spacing: 2px; font-size: 0.85rem; text-transform: uppercase; }
 
     /* --- ACTION BUTTONS --- */
     .cta-container {
       display: flex;
       justify-content: center;
-      gap: 10px;
-      margin: 20px 0;
-      padding: 0 20px;
+      gap: 12px;
+      margin: 24px 0;
+      padding: 0 24px;
     }
 
     .btn {
       flex: 1;
-      max-width: 150px;
-      padding: 12px;
+      max-width: 160px;
+      padding: 14px;
       border-radius: 30px;
       text-decoration: none;
       text-align: center;
       font-weight: 600;
       font-size: 0.85rem;
-      transition: 0.3s;
+      transition: transform 0.2s, box-shadow 0.2s;
     }
+    .btn:active { transform: scale(0.96); }
 
     .btn-shop { background: var(--pkay-pink); color: white; box-shadow: 0 4px 15px var(--accent-glow); }
-    .btn-ticket { background: white; color: var(--bg-dark); }
+    .btn-ticket { background: white; color: var(--bg-dark); font-weight: 700; }
 
     /* --- FEATURED SECTION --- */
     .section-title {
-      padding: 20px 25px 10px;
+      padding: 24px 24px 8px;
       font-family: 'Comfortaa', cursive;
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
     }
-    .section-title::after { content: ""; flex: 1; height: 1px; background: rgba(255,255,255,0.1); }
+    .section-title::after { content: ""; flex: 1; height: 1px; background: rgba(255,255,255,0.08); }
 
     .horizontal-scroll {
       display: flex;
-      gap: 15px;
+      gap: 16px;
       overflow-x: auto;
-      padding: 10px 25px 25px;
+      padding: 12px 24px 24px;
       scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
     }
     .horizontal-scroll::-webkit-scrollbar { display: none; }
 
     .product-card {
-      min-width: 160px;
+      min-width: 150px;
       background: var(--glass);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255,255,255,0.1);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.08);
       border-radius: 20px;
-      padding: 10px;
+      padding: 12px;
       text-align: center;
     }
 
     .product-img {
       width: 100%;
       aspect-ratio: 1/1;
-      background: #222;
-      border-radius: 15px;
+      background: #15112a;
+      border-radius: 14px;
       margin-bottom: 10px;
       overflow: hidden;
     }
     .product-img img { width: 100%; height: 100%; object-fit: cover; }
 
-    .product-card span { font-size: 0.8rem; font-weight: 600; display: block; margin-top: 5px; }
+    .product-card span { font-size: 0.8rem; font-weight: 600; display: block; margin-top: 4px; color: #f1f1f5; }
 
     /* --- CATEGORY LINKS --- */
-    .link-list { padding: 0 25px 40px; }
+    .link-list { padding: 0 24px 40px; }
     
     .link-item {
       background: var(--glass);
-      border: 1px solid rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.04);
       margin-bottom: 12px;
-      padding: 18px;
-      border-radius: 15px;
+      padding: 18px 20px;
+      border-radius: 16px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       text-decoration: none;
       color: white;
-      transition: transform 0.2s;
+      transition: transform 0.2s, background-color 0.2s;
     }
-    .link-item:active { transform: scale(0.98); }
+    .link-item:active { transform: scale(0.98); background: rgba(255,255,255,0.12); }
     
-    .link-info h3 { font-size: 1rem; margin-bottom: 2px; }
-    .link-info p { font-size: 0.75rem; opacity: 0.6; }
-    .arrow { color: var(--pkay-pink); font-weight: bold; }
+    .link-info h3 { font-size: 0.95rem; font-weight: 600; margin-bottom: 3px; }
+    .link-info p { font-size: 0.75rem; opacity: 0.55; font-weight: 300; }
+    .arrow { color: var(--pkay-pink); font-weight: bold; font-size: 1.1rem; }
 
     /* --- FOOTER --- */
     footer {
       text-align: center;
       padding: 40px 20px;
-      background: rgba(0,0,0,0.2);
+      background: rgba(0,0,0,0.25);
+      border-top: 1px solid rgba(255,255,255,0.03);
     }
-    .location { font-size: 0.8rem; opacity: 0.7; margin-bottom: 10px; }
-    .social-icons { font-size: 1.2rem; }
-
+    .location { font-size: 0.8rem; opacity: 0.65; margin-bottom: 8px; font-weight: 400; }
   </style>
 </head>
 <body>
+
+  <div id="splash-screen">
+    <div class="splash-glow-container"></div>
+    <div class="splash-text-group">
+      <div class="splash-logo">PKay</div>
+      <div class="splash-subtitle">Enterprise</div>
+    </div>
+    <div class="splash-build">
+      <div class="build-dot"></div> BOUTIQUE REEL BUILD 0604-1945
+    </div>
+  </div>
 
   <div class="circle-glow"></div>
 
   <header>
     <div class="logo-container">
-      <img src="images/pkay-logo.jpg" alt="PKay Enterprise Logo">
+      <img src="images/pkay-logo.jpg" alt="PKay Enterprise Logo" decoding="async">
     </div>
     <h1>PKay Enterprise</h1>
     <div class="slogan">Wear It! Flaunt It!</div>
   </header>
 
   <div class="cta-container">
-    <a href="#" class="btn btn-shop">Order via DM</a>
+    <a href="https://ig.me/m/pkayjewelry" class="btn btn-shop">Order via DM</a>
     <a href="#" class="btn btn-ticket">Event Tickets</a>
   </div>
 
   <div class="section-title">Anime Collections</div>
   <div class="horizontal-scroll">
     <div class="product-card">
-      <div class="product-img"><img src="images/bookmarks.jpg" alt="Anime Bookmarks"></div>
+      <div class="product-img">
+        <img src="images/bookmarks.jpg" alt="Hand-made Bookmarks" loading="lazy" decoding="async">
+      </div>
       <span>Hand-made Bookmarks</span>
     </div>
     <div class="product-card">
-      <div class="product-img"><img src="images/chains.jpg" alt="Anime Chains"></div>
+      <div class="product-img">
+        <img src="images/chains.jpg" alt="Chains and Pendants" loading="lazy" decoding="async">
+      </div>
       <span>Chains & Pendants</span>
     </div>
     <div class="product-card">
-      <div class="product-img"><img src="images/keychains.jpg" alt="Keychains"></div>
+      <div class="product-img">
+        <img src="images/keychains.jpg" alt="Custom Keychains" loading="lazy" decoding="async">
+      </div>
       <span>Custom Keychains</span>
     </div>
   </div>
@@ -201,7 +295,7 @@
     <a href="#" class="link-item">
       <div class="link-info">
         <h3>Hand-made Jewellery</h3>
-        <p>Bracelets, Anklets, Toe-rings & more</p>
+        <p>Bracelets, Anklets, Toe-rings & custom rings</p>
       </div>
       <span class="arrow">→</span>
     </a>
@@ -209,7 +303,7 @@
     <a href="#" class="link-item">
       <div class="link-info">
         <h3>Cologne Oils</h3>
-        <p>Premium scents for everyday wear</p>
+        <p>Premium rich scents crafted for everyday wear</p>
       </div>
       <span class="arrow">→</span>
     </a>
@@ -217,7 +311,7 @@
     <a href="#" class="link-item">
       <div class="link-info">
         <h3>Anime Merch</h3>
-        <p>Official collections & custom designs</p>
+        <p>Exclusive items, fan bundles & collector essentials</p>
       </div>
       <span class="arrow">→</span>
     </a>
@@ -225,7 +319,7 @@
 
   <footer>
     <div class="location">📍 Kingston, Jamaica</div>
-    <p style="font-size: 0.7rem; opacity: 0.5;">© 2026 PKay Enterprise. Hand-made with passion.</p>
+    <p style="font-size: 0.7rem; opacity: 0.45; font-weight: 300;">&copy; 2026 PKay Enterprise. Hand-made with passion.</p>
   </footer>
 
 </body>
