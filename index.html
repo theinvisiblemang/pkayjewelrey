@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PKay Enterprise | Wear It! Flaunt It!</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Outfit:wght@300;600;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --pkay-pink: #ff85a1;
+      --pkay-purple: #7b2cbf;
+      --glass: rgba(255, 255, 255, 0.1);
+      --bg-dark: #0f0c29;
+      --accent-glow: rgba(255, 133, 161, 0.4);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      color: #fff;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* --- BACKGROUND DECOR --- */
+    .circle-glow {
+      position: fixed;
+      width: 300px; height: 300px;
+      background: var(--pkay-pink);
+      filter: blur(120px);
+      border-radius: 50%;
+      z-index: -1;
+      opacity: 0.3;
+      top: -50px; right: -50px;
+    }
+
+    /* --- HEADER --- */
+    header {
+      text-align: center;
+      padding: 40px 20px 20px;
+    }
+
+    .logo-container {
+      width: 100px; height: 100px;
+      margin: 0 auto 15px;
+      border-radius: 50%;
+      border: 3px solid var(--pkay-pink);
+      padding: 5px;
+      background: white;
+      box-shadow: 0 0 20px var(--accent-glow);
+    }
+
+    .logo-container img {
+      width: 100%; height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    h1 { font-family: 'Comfortaa', cursive; font-size: 1.8rem; margin-bottom: 5px; }
+    .slogan { font-weight: 300; color: var(--pkay-pink); letter-spacing: 2px; font-size: 0.9rem; text-transform: uppercase; }
+
+    /* --- ACTION BUTTONS --- */
+    .cta-container {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 20px 0;
+      padding: 0 20px;
+    }
+
+    .btn {
+      flex: 1;
+      max-width: 150px;
+      padding: 12px;
+      border-radius: 30px;
+      text-decoration: none;
+      text-align: center;
+      font-weight: 600;
+      font-size: 0.85rem;
+      transition: 0.3s;
+    }
+
+    .btn-shop { background: var(--pkay-pink); color: white; box-shadow: 0 4px 15px var(--accent-glow); }
+    .btn-ticket { background: white; color: var(--bg-dark); }
+
+    /* --- FEATURED SECTION --- */
+    .section-title {
+      padding: 20px 25px 10px;
+      font-family: 'Comfortaa', cursive;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-title::after { content: ""; flex: 1; height: 1px; background: rgba(255,255,255,0.1); }
+
+    .horizontal-scroll {
+      display: flex;
+      gap: 15px;
+      overflow-x: auto;
+      padding: 10px 25px 25px;
+      scrollbar-width: none;
+    }
+    .horizontal-scroll::-webkit-scrollbar { display: none; }
+
+    .product-card {
+      min-width: 160px;
+      background: var(--glass);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .product-img {
+      width: 100%;
+      aspect-ratio: 1/1;
+      background: #222;
+      border-radius: 15px;
+      margin-bottom: 10px;
+      overflow: hidden;
+    }
+    .product-img img { width: 100%; height: 100%; object-fit: cover; }
+
+    .product-card span { font-size: 0.8rem; font-weight: 600; display: block; margin-top: 5px; }
+
+    /* --- CATEGORY LINKS --- */
+    .link-list { padding: 0 25px 40px; }
+    
+    .link-item {
+      background: var(--glass);
+      border: 1px solid rgba(255,255,255,0.05);
+      margin-bottom: 12px;
+      padding: 18px;
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      text-decoration: none;
+      color: white;
+      transition: transform 0.2s;
+    }
+    .link-item:active { transform: scale(0.98); }
+    
+    .link-info h3 { font-size: 1rem; margin-bottom: 2px; }
+    .link-info p { font-size: 0.75rem; opacity: 0.6; }
+    .arrow { color: var(--pkay-pink); font-weight: bold; }
+
+    /* --- FOOTER --- */
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      background: rgba(0,0,0,0.2);
+    }
+    .location { font-size: 0.8rem; opacity: 0.7; margin-bottom: 10px; }
+    .social-icons { font-size: 1.2rem; }
+
+  </style>
+</head>
+<body>
+
+  <div class="circle-glow"></div>
+
+  <header>
+    <div class="logo-container">
+      <img src="images/pkay-logo.jpg" alt="PKay Enterprise Logo">
+    </div>
+    <h1>PKay Enterprise</h1>
+    <div class="slogan">Wear It! Flaunt It!</div>
+  </header>
+
+  <div class="cta-container">
+    <a href="#" class="btn btn-shop">Order via DM</a>
+    <a href="#" class="btn btn-ticket">Event Tickets</a>
+  </div>
+
+  <div class="section-title">Anime Collections</div>
+  <div class="horizontal-scroll">
+    <div class="product-card">
+      <div class="product-img"><img src="images/bookmarks.jpg" alt="Anime Bookmarks"></div>
+      <span>Hand-made Bookmarks</span>
+    </div>
+    <div class="product-card">
+      <div class="product-img"><img src="images/chains.jpg" alt="Anime Chains"></div>
+      <span>Chains & Pendants</span>
+    </div>
+    <div class="product-card">
+      <div class="product-img"><img src="images/keychains.jpg" alt="Keychains"></div>
+      <span>Custom Keychains</span>
+    </div>
+  </div>
+
+  <div class="section-title">The Boutique</div>
+  <div class="link-list">
+    <a href="#" class="link-item">
+      <div class="link-info">
+        <h3>Hand-made Jewellery</h3>
+        <p>Bracelets, Anklets, Toe-rings & more</p>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+
+    <a href="#" class="link-item">
+      <div class="link-info">
+        <h3>Cologne Oils</h3>
+        <p>Premium scents for everyday wear</p>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+
+    <a href="#" class="link-item">
+      <div class="link-info">
+        <h3>Anime Merch</h3>
+        <p>Official collections & custom designs</p>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+  </div>
+
+  <footer>
+    <div class="location">📍 Kingston, Jamaica</div>
+    <p style="font-size: 0.7rem; opacity: 0.5;">© 2026 PKay Enterprise. Hand-made with passion.</p>
+  </footer>
+
+</body>
+</html>
